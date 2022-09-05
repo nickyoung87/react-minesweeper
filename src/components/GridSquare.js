@@ -6,6 +6,18 @@ const GridSquare = ({ coords }) => {
   const [bombCount, setBombCount] = useState(0);
   const [foundBomb, setFoundBomb] = useState(false);
 
+  const bombCountColors = [
+    "#5b71a1", // 0
+    "#e6c628", // 1
+    "#ff8015", // 2
+    "#8f6ed5", // 3
+    "#b76ac4", // 4
+    "#0ff2eb", // 5
+    "#aab7c4", // 6
+    "#ffa27b", // 7
+    "#c23d4b", // 8
+  ];
+
   const checkForBombs = () => {
     const x = coords.x;
     const y = coords.y;
@@ -82,6 +94,7 @@ const GridSquare = ({ coords }) => {
           alignItems: "center",
           height: "100%",
           cursor: "pointer",
+          background: clicked ? bombCountColors[bombCount] : "#fff",
         }}
       >
         {!clicked && <span style={{ color: "#fff" }}>E</span>}
