@@ -5,6 +5,7 @@ const GridSquare = ({ coords }) => {
   const [clicked, setClicked] = useState(false);
   const [bombCount, setBombCount] = useState(0);
   const [foundBomb, setFoundBomb] = useState(false);
+  const [hasFlag, setHasFlag] = useState(false);
 
   const bombCountColors = [
     "#5b71a1", // 0
@@ -72,8 +73,14 @@ const GridSquare = ({ coords }) => {
   };
 
   const gridSquareClickHandler = () => {
+    if (hasFlag) return; // Exit early if there is a flag (player needs to remove flag by right clicking again)
     setClicked(true);
     checkForBombs();
+  };
+
+  const gridSquareRightClickHandler = (e) => {
+    e.preventDefault();
+    setHasFlag((prevState) => !prevState);
   };
 
   return (
@@ -86,6 +93,7 @@ const GridSquare = ({ coords }) => {
         background: foundBomb ? "#f00" : "#fff",
       }}
       onClick={gridSquareClickHandler}
+      onContextMenu={gridSquareRightClickHandler}
     >
       <div
         style={{
@@ -97,8 +105,9 @@ const GridSquare = ({ coords }) => {
           background: clicked ? bombCountColors[bombCount] : "#fff",
         }}
       >
-        {!clicked && <span style={{ color: "#fff" }}>E</span>}
-        {clicked && bombCount}
+        {!clicked && !hasFlag && <span style={{ color: "#fff" }}>E</span>}
+        {clicked && !hasFlag && bombCount}
+        {hasFlag && <span>F</span>}
       </div>
     </div>
   );
