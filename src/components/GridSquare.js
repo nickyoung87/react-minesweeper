@@ -91,6 +91,7 @@ const GridSquare = ({ coords }) => {
         border: "1px solid #000",
         display: "inline-block",
         background: foundBomb ? "#f00" : "#fff",
+        userSelect: "none",
       }}
       onClick={gridSquareClickHandler}
       onContextMenu={gridSquareRightClickHandler}
