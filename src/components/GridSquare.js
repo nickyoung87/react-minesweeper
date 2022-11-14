@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBomb } from "@fortawesome/free-solid-svg-icons";
 import boardState from "../boardState";
 
 const GridSquare = ({ coords }) => {
@@ -45,7 +47,7 @@ const GridSquare = ({ coords }) => {
     // Center Center
     if (boardState[x][y] === "B") {
       setFoundBomb(true);
-      setBombCount("B");
+      setBombCount(<FontAwesomeIcon icon={faBomb} />);
       return;
     }
 
