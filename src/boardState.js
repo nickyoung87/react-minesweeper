@@ -9,7 +9,7 @@ for (let i = 0; i < rows; i++) {
   let column = [];
   for (let j = 0; j < cols; j++) {
     if (Math.floor(Math.random() * 100) <= chanceToPlaceBomb) {
-      column.push("B");
+      column.push(9); // We will use the number 9 for bombs
       totalBombs++;
     } else {
       column.push(0);
