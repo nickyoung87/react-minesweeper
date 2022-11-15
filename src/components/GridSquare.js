@@ -152,7 +152,7 @@ const GridSquare = ({ coords }) => {
           <span style={{ color: "#fff", fontSize: "1.64rem" }}>E</span>
         )}
         {clicked && !hasFlag && getBombCountNumber(bombCount)}
-        {hasFlag && <FontAwesomeIcon icon={faFlag} />}
+        {hasFlag && <FontAwesomeIcon icon={faFlag} style={{ color: "#000" }} />}
       </div>
     </div>
   );
